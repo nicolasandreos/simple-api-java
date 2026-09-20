@@ -19,7 +19,7 @@ import com.github.fiap.simple_api_java.dto.ProdutoCreateDto;
 import com.github.fiap.simple_api_java.model.Produto;
 import com.github.fiap.simple_api_java.service.ProdutoService;
 
-@WebMvcTest
+@WebMvcTest(ProdutoController.class)
 public class ProdutoControllerTest {
 
     @Autowired
@@ -57,7 +57,7 @@ public class ProdutoControllerTest {
     @DisplayName("test fail")
     @Test
     void testGivenNewProduto_whenCreate_thenFail() throws Exception{
-        // fail("Um erro acontecerá");
+        fail("Um erro acontecerá");
     }
     
 }
