@@ -16,6 +16,9 @@
 	<description>Simple API Java</description>
 	<properties>
 		<java.version>21</java.version>
+		<lombok.version>1.18.38</lombok.version>
+		<byte-buddy.version>1.17.6</byte-buddy.version>
+		<mockito.version>5.15.2</mockito.version>
 		<mysql-connector-java.version>8.0.33</mysql-connector-java.version>
 		<modelmapper.version>3.2.0</modelmapper.version>
 		<springdoc-openapi.version>2.5.0</springdoc-openapi.version>
@@ -80,6 +83,19 @@
 		<finalName>app</finalName>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>${lombok.version}</version>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
@@ -96,7 +112,8 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
 					<skipTests>false</skipTests>
-				  </configuration>
+					<argLine>-Dnet.bytebuddy.experimental=true</argLine>
+				</configuration>
 			</plugin>	
 		</plugins>
 	</build>
